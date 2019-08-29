@@ -1,0 +1,7 @@
+if [ ! -z "$PHP_BACKEND" ]
+then
+    sed -i "s/DOCKERIZED_MAGENTO2_PHP/$PHP_BACKEND/g" /etc/nginx/conf.d/default.conf
+    echo "Upstream updated to $PHP_BACKEND on /etc/nginx/conf.d/default.conf"
+else
+    echo "Variable PHP_BACKEND is undefined, nothing changed"
+fi

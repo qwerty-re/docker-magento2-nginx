@@ -1,0 +1,5 @@
+services:
+  - docker
+
+script:
+  - docker build -t qwertyre/magento2-nginx:latest . --no-cache
