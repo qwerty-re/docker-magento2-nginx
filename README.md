@@ -26,6 +26,20 @@ If you don't check this, nginx container will be exiting with error:
 nginx: [emerg] host not found in upstream "DOCKERIZED_MAGENTO2_PHP:9000" in /etc/nginx/conf.d/default.conf:2
 ```
 
+##### Example docker-composer configuration
+ 
+ ```yaml
+version: '2'
+services:
+  dockerized_magento2_nginx:
+    container_name: DOCKERIZED_MAGENTO2_NGINX
+    image: qwertyre/magento2-nginx:1.16.1
+    volumes:
+      - ./local-magento:/srv/magento2
+    network_mode: "DOCKER_network"
+    depends_on:
+      - magento2_raw_php
+```
 
 ##### Changing upstream backend host
  
@@ -45,7 +59,7 @@ services:
     container_name: DOCKERIZED_MAGENTO2_NGINX
     image: qwertyre/magento2-nginx:1.16.1
     volumes:
-      - ./magento-2.3.1:/srv/magento2.3
+      - ./magento-2.3.1:/srv/magento2
       - ./mount/nginx/custom.conf:/etc/nginx/conf.d/default.conf
     ...
 ```
